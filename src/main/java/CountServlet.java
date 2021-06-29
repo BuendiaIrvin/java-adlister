@@ -24,6 +24,7 @@ public class CountServlet extends HttpServlet {
         if (reset == null) {
             counter++;
         } else {
+
              counter = 0;
         }
 
