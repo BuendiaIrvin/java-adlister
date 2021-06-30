@@ -53,5 +53,6 @@
     <c:if test="${blue}">
         <p style="color: blue">yay! blue text!</p>
     </c:if>
+
 </body>
 </html>
