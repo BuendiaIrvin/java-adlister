@@ -30,6 +30,7 @@ public class CountServlet extends HttpServlet {
 
         String title = "Total Number of Hits";
 
+
         out.println(
                 "<h1 align = \"center\">" + title + "</h1>\n" +
                         "<h2 align = \"center\">" + counter + "</h2>\n"
