@@ -1,3 +1,4 @@
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,22 +9,46 @@ import java.io.IOException;
 @WebServlet(name = "HelloServlet", urlPatterns = "/pizza-order")
 public class HelloWorldServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+//    request.getRequestDispatcher("/pizzaOrder.jsp").forward(request,response);
         req.getRequestDispatcher("/WEB-INF/pizza.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String crust = req.getParameter("crust");
-        req.setAttribute("crust", crust);
-        String sauce = req.getParameter("sauce");
-        req.setAttribute("sauce", sauce);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.getRequestDispatcher("/WEB-INF/pizza.jsp").forward(request, response);
+
+//    Make these select inputs
+
+        String crustType = request.getParameter("crustType");
+        String sauceType = request.getParameter("sauceType");
+        System.out.println("Crust: ");
+        System.out.println(crustType);
+        System.out.println("");
+        System.out.println("Sauce: ");
+        System.out.println(sauceType);
+        System.out.println("");
+
+//  Make these topping checkboxes ? Should this be an array? or a true or false for each topping?
+        String[] toppings = request.getParameterValues("toppings");
 
 
-        System.out.println(crust);
-        System.out.println(sauce);
 
-        resp.sendRedirect("/pizza-order");
+        System.out.println("Toppings below: ");
+        for (String topping : toppings) {
+            System.out.println(topping);
+        }
+
+
+
+
+
+// Text box
+        String address = request.getParameter("address");
+
+        System.out.println("Address: ");
+        System.out.println(address);
 
     }
+
 }
